@@ -78,4 +78,21 @@ const eliminarUsuario = (req,res)=>{
     })
 }
 
-module.exports = {mostrarUsuarios, mostrarUsuario, crearUsuario, actualizarUsuario, eliminarUsuario};
+const BorradoLogicoUsuario = (req,res)=>{
+    const id = req.body.id_usuario;
+    const { borrado_logico } = req.body; // Asumiendo que el borrado lógico se maneja con un campo booleano
+    const query = "UPDATE Usuarios SET borrado_logico = ? WHERE id_usuario = ?";
+
+    connection.query(query, [borrado_logico,id], (err, results) => {
+        if (err) {
+            console.error("Error al realizar el borrado lógico del usuario:", err);
+            return res.status(500).json({ error: "Error al realizar el borrado lógico del usuario" });
+        }
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+        res.status(200).json({ message: "Borrado lógico realizado exitosamente" });
+    })
+}
+
+module.exports = {mostrarUsuarios, mostrarUsuario, crearUsuario, actualizarUsuario, eliminarUsuario,BorradoLogicoUsuario};
