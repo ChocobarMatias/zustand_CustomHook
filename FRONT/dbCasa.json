@@ -1,0 +1,17 @@
+{
+    "alumno":[
+        {
+        "id": 1,
+        "nombre": "Juan",
+        "apellido": "Pérez",
+        "edad": 20,
+        "curso": "Ingeniería Informática"
+    }, {
+        "id": 2,
+        "nombre": "Ana",
+        "apellido": "Gómez",
+        "edad": 22,
+        "curso": "Arquitectura"
+    }
+]
+}
